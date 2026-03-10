@@ -24,6 +24,7 @@ htmlcov/
 # Flask stuff
 instance/
 .webassets-cache
+.flaskenv
 
 # Editors and IDEs (optional, add as needed)
 .idea/  # JetBrains IDEs (PyCharm, etc.)
