@@ -1,0 +1,31 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+.lol
+# Virtual environment
+.venv/
+venv/
+env/
+ENV/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Unit test / coverage reports
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.pytest_cache/
+
+# Flask stuff
+instance/
+.webassets-cache
+
+# Editors and IDEs (optional, add as needed)
+.idea/  # JetBrains IDEs (PyCharm, etc.)
+.vscode/ # VS Code
+.DS_Store # macOS
