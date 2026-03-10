@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Dashboard</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-logo">FlaskStore</div>
+        <div class="nav-links">
+            <a href="/logout" class="nav-btn">Logout</a>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="card">
+            <h1>Welcome back! 👋</h1>
+            <p>You are successfully logged in as: <strong>{{ email }}</strong></p>
+            <div class="stats-grid">
+                <div class="stat-box"><h3>Profile</h3><p>Active</p></div>
+                <div class="stat-box"><h3>Settings</h3><p>Manage</p></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
