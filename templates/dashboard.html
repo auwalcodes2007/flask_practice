@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>Dashboard</title>
+    <title>Dashboard | My App</title>
 </head>
 <body>
     <nav class="navbar">
@@ -12,13 +13,16 @@
         </div>
     </nav>
 
-    <div class="dashboard-container">
-        <div class="card">
-            <h1>Welcome back! 👋</h1>
-            <p>You are successfully logged in as: <strong>{{ email }}</strong></p>
-            <div class="stats-grid">
-                <div class="stat-box"><h3>Profile</h3><p>Active</p></div>
-                <div class="stat-box"><h3>Settings</h3><p>Manage</p></div>
+    <div class="hero-container">
+        <div class="form-container" style="max-width: 600px; text-align: center;">
+            <h1>Welcome Back! 👋</h1>
+            <p>You are successfully logged in as:</p>
+            <h3 style="color: var(--primary-color);">{{ user_email }}</h3>
+            
+            <hr style="margin: 2rem 0; border: 0; border-top: 1px solid #eee;">
+            
+            <div class="hero-actions">
+                <p>This is your private dashboard. Only you can see this.</p>
             </div>
         </div>
     </div>

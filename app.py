@@ -58,6 +58,7 @@ def login():
     return render_template("login.html", form=form)
 
 # Create Dashboard route
-# @app.route("/dashboard")
-# def dashboard
+@app.route("/dashboard")
+def dashboard():
+    return render_template("dashboard.html")
 

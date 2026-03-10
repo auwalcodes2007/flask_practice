@@ -179,3 +179,17 @@ p {
 /* Adjust the existing body tag from previous code: 
    Remove 'display: flex' if you want the home page to scroll naturally, 
    or wrap your login/register content in a wrapper div. */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.stat-card {
+    background: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
