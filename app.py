@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from forms import RegisterForm, LoginForm
@@ -47,6 +47,7 @@ def register():
         user = User(email=email, password=hashed_password)
         db.session.add(user)
         db.session.commit()
+        return redirect(url_for('dashboard'))
         
 
     return render_template("register.html", form=form)
@@ -62,3 +63,4 @@ def login():
 def dashboard():
     return render_template("dashboard.html")
 
+# Create Logout route
