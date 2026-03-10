@@ -48,8 +48,10 @@ def register():
         db.session.add(user)
         db.session.commit()
         return redirect(url_for('dashboard'))
-        
 
+    if form.errors:
+        print(f"Form error: {form.errors}")
+        
     return render_template("register.html", form=form)
 
 # Create login route
