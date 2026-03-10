@@ -1,12 +1,22 @@
 from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from forms import RegisterForm, LoginForm
 
 # Initialize flask app
 app = Flask(__name__)
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.db"
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 # Create a database
+class Base(DeclarativeBase):
+    pass
+db = SQLAlchemy(model_class=Base)
+db.init_app(app)
 
 # Create a user model with id, email and password
+
+# Create tables
 
 # Create home route
 @app.route("/")
