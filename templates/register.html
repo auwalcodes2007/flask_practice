@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>Register</title>
-</head>
-<body>
-    <div class="form-container">
+{% extends 'base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="form-container">
         <form action="{{ url_for('register') }}" method="POST" class="auth-form">
+            <!-- {{ form.csrf_token }} -->
             <h2>Create Account</h2>
             <p>Please enter your details</p>
             
@@ -22,5 +21,4 @@
         {{ form.submit(class="btn") }}
         </form>
     </div>
-</body>
-</html>
+    {% endblock %}
