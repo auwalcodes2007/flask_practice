@@ -10,9 +10,9 @@
     <nav class="navbar">
         <div class="nav-logo">FlaskStore</div>
         <div class="nav-links">
-            <a href="/">Home</a>
-            <a href="/login">Login</a>
-            <a href="/register" class="nav-btn">Get Started</a>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('register') }}" class="nav-btn">Get Started</a>
         </div>
     </nav>
 
@@ -22,8 +22,8 @@
             <p>A simple, clean, and powerful starting point for your next big idea. Log in to manage your dashboard or sign up to get started today.</p>
             
             <div class="hero-actions">
-                <a href="/register" class="btn">Create Account</a>
-                <a href="/login" class="btn btn-outline">Sign In</a>
+                <a href="{{ url_for('register') }}" class="btn">Create Account</a>
+                <a href="{{ url_for('login') }}" class="btn btn-outline">Sign In</a>
             </div>
         </div>
     </main>
