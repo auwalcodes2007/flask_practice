@@ -4,6 +4,7 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from forms import RegisterForm, LoginForm
 import os
 from dotenv import load_dotenv
+from werkzeug.security import generate_password_hash, check_password_hash
 
 load_dotenv()
 # Create a database
@@ -37,6 +38,17 @@ def home():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     form = RegisterForm()
+    if form.validate_on_submit():
+        # Get form data and hash password
+        email = form.email.data
+        password = form.password.data
+        hashed_password = generate_password_hash(password, salt_length=16)
+        # Add user to database
+        user = User(email=email, password=hashed_password)
+        db.session.add(user)
+        db.session.commit()
+        
+
     return render_template("register.html", form=form)
 
 # Create login route
@@ -44,4 +56,8 @@ def register():
 def login():
     form = LoginForm()
     return render_template("login.html", form=form)
+
+# Create Dashboard route
+# @app.route("/dashboard")
+# def dashboard
 
