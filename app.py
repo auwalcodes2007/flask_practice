@@ -22,7 +22,9 @@ class User(db.Model):
     password: Mapped[str] = mapped_column(nullable=False)
 
 # Create tables
-
+with app.app_context():
+    db.create_all()
+    
 # Create home route
 @app.route("/")
 def home():
