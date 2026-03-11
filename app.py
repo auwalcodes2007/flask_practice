@@ -1,6 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, flash
 from models import db, User
-from sqlalchemy.exc import IntegrityError
 from forms import RegisterForm, LoginForm
 import os
 from dotenv import load_dotenv
@@ -45,15 +44,11 @@ def register():
         # Get form data and hash password
         hashed_password = generate_password_hash(form.password.data, salt_length=16)
         user = User(email=form.email.data, password=hashed_password)
-        # Add user to database using try/except
-        try:
-            db.session.add(user)
-            db.session.commit()
-            login_user(user)
-            return redirect(url_for('dashboard'))
-        except IntegrityError:
-            flash("Email already exists")
-            return redirect(url_for('login'))
+        # Add user to database
+        db.session.add(user)
+        db.session.commit()
+        login_user(user)
+        return redirect(url_for('dashboard'))
 
     if form.errors:
         print(f"Form error: {form.errors}")
