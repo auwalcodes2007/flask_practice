@@ -13,10 +13,13 @@
     <nav class="navbar">
       <a href="{{ url_for('home') }}" class="nav-logo">FlaskStore</a>
       <div class="nav-links">
-        <a href="{{ url_for('home') }}">Home</a>
-        <a href="{{ url_for('login') }}">Login</a>
-        <a href="{{ url_for('register') }}" class="nav-btn">Get Started</a>
-        <a href="{{ url_for('logout') }}" class="nav-btn">Logout</a>
+        {% if current_user.is_authenticated %}
+          <a href="{{ url_for('dashboard') }}">Dashboard</a>
+          <a href="{{ url_for('logout') }}" class="nav-btn">Logout</a>
+        {% else %}
+          <a href="{{ url_for('login') }}">Login</a>
+          <a href="{{ url_for('register') }}" class="nav-btn">Get Started</a>
+        {% endif %}
       </div>
     </nav>
     {% block content %}{% endblock %}
