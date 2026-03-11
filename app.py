@@ -77,6 +77,7 @@ def login():
             login_user(user)
             return redirect(url_for('dashboard'))
         else:
+
             print("Invalid credentials")
     return render_template("login.html", form=form)
 
@@ -88,5 +89,7 @@ def dashboard():
 
 # Create Logout route
 @app.route("/logout")
+@login_required
 def logout():
+    logout_user()
     return redirect(url_for("home"))
