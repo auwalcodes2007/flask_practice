@@ -33,6 +33,8 @@ with app.app_context():
 # Create home route
 @app.route("/")
 def home():
+    if current_user.is_authenticated:
+        return redirect(url_for('dashboard'))
     return render_template("index.html")
 
 # Create register route
@@ -61,6 +63,8 @@ def register():
 # Create login route
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('dashboard'))
     form = LoginForm()
     if form.validate_on_submit():
         email = form.email.data
