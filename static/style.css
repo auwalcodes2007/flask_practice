@@ -132,6 +132,13 @@ p {
     border-radius: 6px;
 }
 
+.nav-logo {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #333; /* Or whatever brand color you vibe with */
+}
+
 /* Hero Section */
 .hero-container {
     padding-top: 80px; /* Space for fixed nav */

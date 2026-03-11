@@ -1,23 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
     <title>{% block title %}Welcome | My Flask App{% endblock %}</title>
-</head>
-<body>
+  </head>
+  <body>
     <nav class="navbar">
-        <div class="nav-logo"><a href="{{ url_for('home') }}">FlaskStore</a></div>
-        <div class="nav-links">
-            <a href="{{ url_for('home') }}">Home</a>
-            <a href="{{ url_for('login') }}">Login</a>
-            <a href="{{ url_for('register') }}" class="nav-btn">Get Started</a>
-            <a href="{{ url_for('logout') }}" class="nav-btn">Logout</a>
-        </div>
+      <a href="{{ url_for('home') }}" class="nav-logo">FlaskStore</a>
+      <div class="nav-links">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('register') }}" class="nav-btn">Get Started</a>
+        <a href="{{ url_for('logout') }}" class="nav-btn">Logout</a>
+      </div>
     </nav>
-        {% block content %}{% endblock %}
-
-
-</body>
+    {% block content %}{% endblock %}
+  </body>
 </html>
