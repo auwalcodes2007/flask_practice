@@ -10,6 +10,7 @@ load_dotenv()
 
 # Initialize login manager
 login_manager = LoginManager()
+login_manager.login_view = 'login'
 
 # Initialize flask app
 app = Flask(__name__)
