@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from forms import RegisterForm, LoginForm
@@ -77,8 +77,7 @@ def login():
             login_user(user)
             return redirect(url_for('dashboard'))
         else:
-
-            print("Invalid credentials")
+            flash("Sorry, invalid credentials")
     return render_template("login.html", form=form)
 
 # Create Dashboard route

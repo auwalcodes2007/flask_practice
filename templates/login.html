@@ -5,6 +5,20 @@
     <div class="form-container">
         <form action="{{ url_for('login') }}" method="POST" class="auth-form">
             {{ form.csrf_token }}
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flashes-container">
+                {% for category, message in messages %}
+                    <div class="flash-alert {{ category }}">
+                    <span class="alert-icon">⚠️</span>
+                    <span class="alert-message">{{ message }}</span>
+                    </div>
+                {% endfor %}
+                </div>
+            {% endif %}
+            {% endwith %}
+
+
             <h2>Welcome Back</h2>
             <p>Please enter your details</p>
 

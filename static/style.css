@@ -296,3 +296,62 @@ p {
     border-radius: 8px;
     border: 1px solid #e5e7eb;
 }
+
+
+/* Styling for flash error messages */
+/* Container for the messages */
+.flashes {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0; /* Space before the 'Welcome Back' text */
+    width: 100%;
+}
+
+/* Individual alert box */
+.flashes li {
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-align: center;
+    border: 1px solid transparent;
+}
+
+/* Specific category colors (Modern & Muted) */
+/* Container spacing */
+.flashes-container {
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+/* The modern alert box */
+.flash-alert {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    background: #fff; /* White background for better contrast */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-left: 5px solid #ccc; /* Default side accent */
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Error specific styling */
+.error, .danger {
+    background-color: #fff5f5;
+    border-left-color: #e53e3e; /* Deep Red side bar */
+    color: #c53030; /* Bold Red text */
+}
+
+.alert-message {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Subtle entrance animation */
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
