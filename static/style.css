@@ -63,7 +63,7 @@ p {
 .input-group input:focus {
     outline: none;
     border-color: var(--primary-color);
-    ring: 2px solid var(--primary-color);
+    /* ring: 2px solid var(--primary-color); */
 }
 
 .btn {

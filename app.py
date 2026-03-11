@@ -66,3 +66,6 @@ def dashboard():
     return render_template("dashboard.html")
 
 # Create Logout route
+@app.route("/logout")
+def logout():
+    return redirect(url_for("home"))

@@ -1,19 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>Dashboard | My App</title>
-</head>
-<body>
-    <nav class="navbar">
-        <div class="nav-logo">FlaskStore</div>
-        <div class="nav-links">
-            <a href="{{ url_for('logout') }}" class="nav-btn">Logout</a>
-        </div>
-    </nav>
+{% extends 'base.html' %}
 
-    <div class="hero-container">
+{% block content %}
+<div class="hero-container">
         <div class="form-container" style="max-width: 600px; text-align: center;">
             <h1>Welcome Back! 👋</h1>
             <p>You are successfully logged in as:</p>
@@ -26,5 +14,5 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+
+{% endblock %}
