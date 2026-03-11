@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+from flask_login import UserMixin
 
 # Create a database
 class Base(DeclarativeBase):

@@ -1,6 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, flash
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+from models import db, User
 from sqlalchemy.exc import IntegrityError
 from forms import RegisterForm, LoginForm
 import os
@@ -9,10 +8,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 
 load_dotenv()
-# Create a database
-class Base(DeclarativeBase):
-    pass
-db = SQLAlchemy(model_class=Base)
 
 # Initialize login manager
 login_manager = LoginManager()
@@ -30,12 +25,6 @@ login_manager.init_app(app)
 def load_user(user_id):
     return db.session.get(User, user_id)
 
-
-# Create a user model with id, email and password
-class User(db.Model, UserMixin):
-    id: Mapped[int] = mapped_column(primary_key=True)
-    email: Mapped[str] = mapped_column(unique=True, nullable=False)
-    password: Mapped[str] = mapped_column(nullable=False)
 
 # Create tables
 with app.app_context():

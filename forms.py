@@ -7,14 +7,17 @@ from models import db, User
 class RegisterForm(FlaskForm):
     email = StringField("Email", validators=[DataRequired(), Email()])
     password = PasswordField("Password", validators=[DataRequired(), Length(min=6)])
-    password2 = PasswordField("Confirm Password", validators=[DataRequired(), EqualTo("password")])
+    password2 = PasswordField("Confirm Password", validators=[DataRequired(), EqualTo("password", message='Passwords must match')])
     submit = SubmitField("Register")
 
     # Validate if email already exists
     def validate_email(self, email):
-        user = db.session.execute(db.select(User).where(User.email == email.data)).first()
+        user = db.session.execute(db.select(User).where(User.email == email.data)).scalar()
         if user:
             raise ValidationError("Email already registered")
+
+    # Verify password match
+    # def validate_password(self, password, password2):
 
 
 # Create Login Form
