@@ -10,7 +10,7 @@
         <p>You don't have permission to view this page. You need to be logged in to access your dashboard.</p>
         
         <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 10px;">
-            <a href="/login" class="btn">Login to Continue</a>
+            <a href="{{ url_for('logout') }}" class="btn">Login to Continue</a>
             <a href="/" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">Back to Home</a>
         </div>
     </div>

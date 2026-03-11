@@ -93,3 +93,8 @@ def dashboard():
 def logout():
     logout_user()
     return redirect(url_for("home"))
+
+# Error handler to redirect unauthorized access
+@app.errorhandler(401)
+def unauthorized(e):
+    return render_template("denied.html"), 401
