@@ -69,10 +69,20 @@ def register():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     form = LoginForm()
+    if form.validate_on_submit():
+        email = form.email.data
+        password = form.password.data
+        user = db.session.execute(db.select(User).where(User.email == email)).scalar()
+        if user and check_password_hash(user.password, password):
+            login_user(user)
+            return redirect(url_for('dashboard'))
+        else:
+            print("Invalid credentials")
     return render_template("login.html", form=form)
 
 # Create Dashboard route
 @app.route("/dashboard")
+@login_required
 def dashboard():
     return render_template("dashboard.html")
 
