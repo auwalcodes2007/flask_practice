@@ -22,7 +22,7 @@
             <div class="input-group">
             {{ form.password.label }} {{ form.password(placeholder="Enter password") }}
             {% if form.password.errors %}
-                {% for error in errors %}
+                {% for error in form.password.errors %}
                     <span class="error-text">{{ error }}</span>
                 {% endfor %}
             {% endif %}
