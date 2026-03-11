@@ -1,15 +1,35 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
 
 {% block content %}
-    <main class="hero-container">
-        <div class="hero-content">
-            <h1>Build something <span class="highlight">legendary.</span></h1>
-            <p>A simple, clean, and powerful starting point for your next big idea. Log in to manage your dashboard or sign up to get started today.</p>
-            
-            <div class="hero-actions">
-                <a href="{{ url_for('register') }}" class="btn">Create Account</a>
-                <a href="{{ url_for('login') }}" class="btn btn-outline">Sign In</a>
-            </div>
+<section class="hero">
+    <div class="hero-content">
+        <span class="badge">New Version 2.0</span>
+        <h1>Secure your data with <span class="gradient-text">FlaskBox</span></h1>
+        <p>The simplest way to manage your profile and secure your credentials. Built with Flask, styled for the future.</p>
+        
+        <div class="hero-btns">
+            {% if not session.get('user') %}
+                <a href="{{ url_for('register') }}" class="btn btn-primary">Get Started for Free</a>
+                <a href="{{ url_for('login') }}" class="btn btn-secondary">Sign In</a>
+            {% else %}
+                <a href="{{ url_for('dashboard') }}" class="btn btn-primary">Go to Dashboard</a>
+            {% endif %}
         </div>
-    </main>
-        {% endblock %}
+    </div>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="icon">🔒</div>
+            <h3>Secure Auth</h3>
+            <p>Built-in CSRF protection and session management via Flask-WTF.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon">⚡</div>
+            <h3>Fast Performance</h3>
+            <p>Lightweight backend logic ensuring your app stays snappy.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
