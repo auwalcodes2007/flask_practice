@@ -5,6 +5,7 @@ from forms import RegisterForm, LoginForm
 import os
 from dotenv import load_dotenv
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 
 load_dotenv()
 # Create a database
@@ -12,15 +13,25 @@ class Base(DeclarativeBase):
     pass
 db = SQLAlchemy(model_class=Base)
 
+# Initialize login manager
+login_manager = LoginManager()
+
 # Initialize flask app
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 db.init_app(app)
+login_manager.init_app(app)
+
+# Create the User Loader
+@login_manager.user_loader
+def load_user(user_id):
+    return db.session.get(User, user_id)
+
 
 # Create a user model with id, email and password
-class User(db.Model):
+class User(db.Model, UserMixin):
     id: Mapped[int] = mapped_column(primary_key=True)
     email: Mapped[str] = mapped_column(unique=True, nullable=False)
     password: Mapped[str] = mapped_column(nullable=False)
