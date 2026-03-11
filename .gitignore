@@ -8,6 +8,7 @@ __pycache__/
 venv/
 env/
 ENV/
+.env
 
 # Distribution / packaging
 build/
@@ -30,3 +31,5 @@ instance/
 .idea/  # JetBrains IDEs (PyCharm, etc.)
 .vscode/ # VS Code
 .DS_Store # macOS
+.env
+.env
